@@ -33,7 +33,7 @@ fun BottomNavigation(
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
-                modifier = Modifier.background(colorResource(id = R.color.bottom_bar_color)),
+                modifier = Modifier.background(colorResource(id = R.color.white)),
                 icon = {
                     Icon(
                         modifier = Modifier.size(30.dp),

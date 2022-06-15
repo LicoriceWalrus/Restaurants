@@ -25,10 +25,12 @@ import com.example.restaurants.features.restaurants.domain.entity.Specialization
 fun RestaurantItem(
     restaurant: Restaurant
 ) {
-    var text = ""
+    val text: StringBuilder = StringBuilder()
     for (i in 0 until restaurant.specializations.size) {
-        text += restaurant.specializations[i].name +
-                if (i < restaurant.specializations.size - 1) " / " else ""
+        text.append(
+            restaurant.specializations[i].name +
+                    if (i < restaurant.specializations.size - 1) " / " else ""
+        )
     }
     Card(
         modifier = Modifier
@@ -64,7 +66,7 @@ fun RestaurantItem(
                     text = restaurant.name
                 )
                 Text(
-                    text = text,
+                    text = text.toString(),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.padding(bottom = 4.dp)

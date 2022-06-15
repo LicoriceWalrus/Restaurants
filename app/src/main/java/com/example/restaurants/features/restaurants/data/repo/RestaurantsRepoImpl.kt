@@ -1,10 +1,11 @@
-package com.example.restaurants.features.restaurants.domain.repo
+package com.example.restaurants.features.restaurants.data.repo
 
 import com.example.restaurants.data.getOrThrow
 import com.example.restaurants.features.restaurants.data.api.RestaurantsApi
 import com.example.restaurants.features.restaurants.data.dto.RestaurantsDto
 import com.example.restaurants.features.restaurants.domain.entity.Restaurant
 import com.example.restaurants.features.restaurants.domain.entity.Specialization
+import com.example.restaurants.features.restaurants.domain.repo.RestaurantsRepo
 
 class RestaurantsRepoImpl(
     private val api: RestaurantsApi
@@ -19,14 +20,14 @@ class RestaurantsRepoImpl(
     }
 
     private fun RestaurantsDto.mapToEntity() = Restaurant(
-        name = this.name.orEmpty(),
-        logo = this.logo.orEmpty(),
-        minCost = this.minCost.orEmpty(),
-        deliveryCost = this.deliveryCost.orEmpty(),
-        deliveryTime = this.deliveryTime.orEmpty(),
-        positiveReviews = this.positiveReviews.orEmpty(),
-        reviewsCount = this.reviewsCount.orEmpty(),
-        specializations = this.specializations?.map {
+        name = name.orEmpty(),
+        logo = logo.orEmpty(),
+        minCost = minCost.orEmpty(),
+        deliveryCost = deliveryCost.orEmpty(),
+        deliveryTime = deliveryTime.orEmpty(),
+        positiveReviews = positiveReviews.orEmpty(),
+        reviewsCount = reviewsCount.orEmpty(),
+        specializations = specializations?.map {
             Specialization(it.name.orEmpty())
         } ?: emptyList(),
     )

@@ -1,9 +1,10 @@
-package com.example.restaurants.features.hits.domain.repo
+package com.example.restaurants.features.hits.data.repo
 
 import com.example.restaurants.data.getOrThrow
 import com.example.restaurants.features.hits.data.api.HitsApi
 import com.example.restaurants.features.hits.data.dto.HitsDto
 import com.example.restaurants.features.hits.domain.entity.Hit
+import com.example.restaurants.features.hits.domain.repo.HitsRepo
 
 class HitsRepoImpl(
     private val api: HitsApi
@@ -19,12 +20,12 @@ class HitsRepoImpl(
     }
 
     private fun HitsDto.mapToEntity() = Hit(
-        productName = this.productName.orEmpty(),
-        productImage = this.productImage.orEmpty(),
-        productPrice = this.productPrice.orEmpty(),
-        productDescription = this.productDescription.orEmpty(),
-        restaurantId = this.restaurantId.orEmpty(),
-        restaurantName = this.restaurantName.orEmpty(),
-        restaurantLogo = this.restaurantLogo.orEmpty(),
+        productName = productName.orEmpty(),
+        productImage = productImage.orEmpty(),
+        productPrice = productPrice.orEmpty(),
+        productDescription = productDescription.orEmpty(),
+        restaurantId = restaurantId.orEmpty(),
+        restaurantName = restaurantName.orEmpty(),
+        restaurantLogo = restaurantLogo.orEmpty(),
     )
 }

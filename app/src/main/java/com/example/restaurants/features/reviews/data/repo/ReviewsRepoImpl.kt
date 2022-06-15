@@ -1,9 +1,10 @@
-package com.example.restaurants.features.reviews.domain.repo
+package com.example.restaurants.features.reviews.data.repo
 
 import com.example.restaurants.data.getOrThrow
 import com.example.restaurants.features.reviews.data.api.ReviewsApi
 import com.example.restaurants.features.reviews.data.dto.ReviewsDto
 import com.example.restaurants.features.reviews.domain.entity.Review
+import com.example.restaurants.features.reviews.domain.repo.ReviewsRepo
 
 class ReviewsRepoImpl(
     private val api: ReviewsApi
@@ -19,10 +20,10 @@ class ReviewsRepoImpl(
     }
 
     private fun ReviewsDto.mapToEntity() = Review(
-        isPositive = this.isPositive == "true",
-        message = this.message.orEmpty(),
-        dateAdded = this.dateAdded.orEmpty(),
-        userFIO = this.userFIO.orEmpty(),
-        restaurantName = this.restaurantName.orEmpty()
+        isPositive = isPositive == "true",
+        message = message.orEmpty(),
+        dateAdded = dateAdded.orEmpty(),
+        userFIO = userFIO.orEmpty(),
+        restaurantName = restaurantName.orEmpty()
     )
 }

@@ -1,6 +1,5 @@
 package com.example.restaurants.features.reviews.presentation.model
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -20,7 +19,6 @@ import androidx.compose.ui.unit.sp
 import com.example.restaurants.R
 import com.example.restaurants.features.reviews.domain.entity.Review
 
-@SuppressLint("SimpleDateFormat")
 @Composable
 fun ReviewsItem(
     review: Review

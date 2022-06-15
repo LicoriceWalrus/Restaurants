@@ -4,7 +4,7 @@ import com.example.restaurants.features.restaurants.data.api.RestaurantsApi
 import com.example.restaurants.features.restaurants.domain.interactor.RestaurantsInteractor
 import com.example.restaurants.features.restaurants.domain.interactor.RestaurantsInteractorImpl
 import com.example.restaurants.features.restaurants.domain.repo.RestaurantsRepo
-import com.example.restaurants.features.restaurants.domain.repo.RestaurantsRepoImpl
+import com.example.restaurants.features.restaurants.data.repo.RestaurantsRepoImpl
 import com.example.restaurants.features.restaurants.presentation.RestaurantsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

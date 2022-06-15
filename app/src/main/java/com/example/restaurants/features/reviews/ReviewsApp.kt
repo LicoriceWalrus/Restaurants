@@ -4,7 +4,7 @@ import com.example.restaurants.features.reviews.data.api.ReviewsApi
 import com.example.restaurants.features.reviews.domain.interactor.ReviewsInteractor
 import com.example.restaurants.features.reviews.domain.interactor.ReviewsInteractorImpl
 import com.example.restaurants.features.reviews.domain.repo.ReviewsRepo
-import com.example.restaurants.features.reviews.domain.repo.ReviewsRepoImpl
+import com.example.restaurants.features.reviews.data.repo.ReviewsRepoImpl
 import com.example.restaurants.features.reviews.presentation.ReviewsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
