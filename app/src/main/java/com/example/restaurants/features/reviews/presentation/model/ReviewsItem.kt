@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
@@ -46,7 +47,7 @@ fun ReviewsItem(
                         else R.drawable.ic_thumb_down
                     ),
                     contentDescription = "",
-                    tint = Color.Unspecified
+                    tint = colorResource(id = R.color.bottom_bar_color)
                 )
                 Text(
                     maxLines = 1,
@@ -58,13 +59,14 @@ fun ReviewsItem(
             }
             Text(
                 modifier = Modifier.padding(bottom = 4.dp),
-                fontSize = 16.sp,
+                fontSize = 14.sp,
                 text = review.message
             )
             Text(
                 text = review.dateAdded,
                 fontSize = 16.sp,
-                fontStyle = FontStyle.Italic
+                fontStyle = FontStyle.Italic,
+                color = Color.Gray
             )
         }
     }

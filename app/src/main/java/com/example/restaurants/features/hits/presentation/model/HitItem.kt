@@ -6,16 +6,17 @@ import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.example.restaurants.R
 import com.example.restaurants.features.hits.domain.entity.Hit
 
 @Composable
@@ -42,7 +43,10 @@ fun HitItem(
                         .padding(end = 8.dp)
                         .align(CenterVertically)
                         .size(75.dp),
-                    painter = rememberAsyncImagePainter(hit.productImage),
+                    painter = rememberAsyncImagePainter(
+                        error = painterResource(id = R.drawable.ic_no_logo),
+                        model = hit.productImage
+                    ),
                     contentDescription = "",
                     tint = Color.Unspecified
                 )
@@ -63,7 +67,10 @@ fun HitItem(
                                 .padding(end = 8.dp)
                                 .size(20.dp)
                                 .align(CenterVertically),
-                            painter = rememberAsyncImagePainter(hit.restaurantLogo),
+                            painter = rememberAsyncImagePainter(
+                                error = painterResource(id = R.drawable.ic_no_logo),
+                                model = hit.restaurantLogo
+                            ),
                             contentDescription = "",
                             tint = Color.Unspecified
                         )
@@ -83,6 +90,7 @@ fun HitItem(
             }
             Text(
                 fontSize = 16.sp,
+                color = Color.Gray,
                 text = hit.productDescription,
                 fontStyle = FontStyle.Italic
             )

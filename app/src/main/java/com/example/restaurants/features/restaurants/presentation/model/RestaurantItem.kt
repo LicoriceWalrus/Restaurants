@@ -9,7 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,7 +45,10 @@ fun RestaurantItem(
                     .padding(end = 8.dp)
                     .align(CenterVertically)
                     .size(75.dp),
-                painter = rememberAsyncImagePainter(restaurant.logo),
+                painter = rememberAsyncImagePainter(
+                    error = painterResource(id = R.drawable.ic_no_logo),
+                    model = restaurant.logo
+                ),
                 contentDescription = "",
                 tint = Color.Unspecified
             )
@@ -74,9 +79,12 @@ fun RestaurantItem(
                             id = if (restaurant.positiveReviews.toInt() > 50) R.drawable.ic_thumb_up
                             else R.drawable.ic_thumb_down
                         ),
-                        contentDescription = ""
+                        contentDescription = "",
+                        tint = colorResource(id = R.color.bottom_bar_color)
                     )
                     Text(
+                        fontStyle = FontStyle.Italic,
+                        color = Color.Gray,
                         fontSize = 18.sp,
                         text = restaurant.positiveReviews + "%"
                     )
