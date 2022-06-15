@@ -1,42 +1,42 @@
-package com.example.restaurants.features.restaurants.presentation
+package com.example.restaurants.features.hits.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.restaurants.features.restaurants.domain.interactor.RestaurantsInteractor
+import com.example.restaurants.features.hits.domain.interactor.HitsInteractor
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class RestaurantsViewModel(
-    private val interactor: RestaurantsInteractor
+class HitsViewModel(
+    private val interactor: HitsInteractor
 ) : ViewModel() {
 
-    private var state: RestaurantsScreenState =
-        RestaurantsScreenState()
-    private val screenState: MutableStateFlow<RestaurantsScreenState> = MutableStateFlow(state)
+    private var state: HitsScreenState =
+        HitsScreenState()
+    private val screenState: MutableStateFlow<HitsScreenState> = MutableStateFlow(state)
 
     init {
-        getRestaurants()
+        getHits()
     }
 
-    fun screenState(): StateFlow<RestaurantsScreenState> = screenState
+    fun screenState(): StateFlow<HitsScreenState> = screenState
 
     fun refresh() {
-        getRestaurants(isRefreshing = true)
+        getHits(isRefreshing = true)
     }
 
-    private fun getRestaurants(isRefreshing: Boolean = false) {
+    private fun getHits(isRefreshing: Boolean = false) {
         viewModelScope.launch {
             state = state.copy(loading = !isRefreshing, isRefreshing = isRefreshing)
             updateUi()
             runCatching {
-                interactor.getRestaurants()
+                interactor.getHits()
             }.onSuccess {
-                state = state.copy(loading = false, isRefreshing = false, restaurants = it)
+                state = state.copy(loading = false, isRefreshing = false, hits = it)
                 updateUi()
             }.onFailure {
                 state = state.copy(
-                    restaurants = emptyList(),
+                    hits = emptyList(),
                     loading = false,
                     isRefreshing = false,
                     errorMessage = it.message.orEmpty()

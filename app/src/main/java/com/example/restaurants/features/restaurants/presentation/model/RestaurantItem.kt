@@ -23,13 +23,6 @@ import com.example.restaurants.features.restaurants.domain.entity.Specialization
 fun RestaurantItem(
     restaurant: Restaurant
 ) {
-    Restaurant(restaurant = restaurant)
-}
-
-@Composable
-private fun Restaurant(
-    restaurant: Restaurant
-) {
     var text = ""
     for (i in 0 until restaurant.specializations.size) {
         text += restaurant.specializations[i].name +
@@ -96,7 +89,7 @@ private fun Restaurant(
 @Composable
 @Preview
 private fun RestaurantPreview() {
-    Restaurant(
+    RestaurantItem(
         restaurant = Restaurant(
             name = "ПиццаСушиБорщ",
             logo = "https://static.chibbis.ru/Images/Restaurants/Архангельск/AGAMA/app/logo.jpg",
