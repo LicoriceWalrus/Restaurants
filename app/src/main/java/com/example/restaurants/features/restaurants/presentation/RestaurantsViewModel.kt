@@ -19,27 +19,43 @@ class RestaurantsViewModel(
         getRestaurants()
     }
 
+    fun searchByName(query: String) {
+        getRestaurants(querySearch = query)
+    }
+
+    fun onQueryChanged(newQuery: String) {
+        viewModelScope.launch {
+            state = state.copy(query = newQuery)
+            updateUi()
+        }
+    }
+
     fun screenState(): StateFlow<RestaurantsScreenState> = screenState
 
     fun refresh() {
-        getRestaurants(isRefreshing = true)
+        getRestaurants(isRefreshing = true, querySearch = state.query ?: "")
     }
 
-    private fun getRestaurants(isRefreshing: Boolean = false) {
+    private fun getRestaurants(isRefreshing: Boolean = false, querySearch: String = "") {
         viewModelScope.launch {
             state = state.copy(loading = !isRefreshing, isRefreshing = isRefreshing)
             updateUi()
             runCatching {
                 interactor.getRestaurants()
             }.onSuccess {
-                state = state.copy(loading = false, isRefreshing = false, restaurants = it)
+                state = state.copy(
+                    loading = false,
+                    isRefreshing = false,
+                    restaurants = if (querySearch.isNotEmpty()) it.filter { restaurant ->
+                        restaurant.name.lowercase().contains(querySearch.lowercase())
+                    } else it
+                )
                 updateUi()
             }.onFailure {
                 state = state.copy(
                     restaurants = emptyList(),
                     loading = false,
-                    isRefreshing = false,
-                    errorMessage = it.message.orEmpty()
+                    isRefreshing = false
                 )
                 updateUi()
             }

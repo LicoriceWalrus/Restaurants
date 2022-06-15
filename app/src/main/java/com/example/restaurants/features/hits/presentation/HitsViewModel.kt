@@ -38,8 +38,7 @@ class HitsViewModel(
                 state = state.copy(
                     hits = emptyList(),
                     loading = false,
-                    isRefreshing = false,
-                    errorMessage = it.message.orEmpty()
+                    isRefreshing = false
                 )
                 updateUi()
             }

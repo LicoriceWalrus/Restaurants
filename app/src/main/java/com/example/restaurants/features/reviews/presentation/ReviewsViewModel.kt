@@ -38,8 +38,7 @@ class ReviewsViewModel(
                 state = state.copy(
                     reviews = emptyList(),
                     loading = false,
-                    isRefreshing = false,
-                    errorMessage = it.message.orEmpty()
+                    isRefreshing = false
                 )
                 updateUi()
             }

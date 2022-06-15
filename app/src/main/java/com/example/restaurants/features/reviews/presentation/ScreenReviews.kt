@@ -86,7 +86,6 @@ private fun ReviewsPreview() {
                         restaurantName = "Суши-Пес"
                     )
                 ),
-                errorMessage = "",
                 isRefreshing = false
             )
         ),
