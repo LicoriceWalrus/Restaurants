@@ -34,6 +34,7 @@ private fun Hits(
     refresh: () -> Unit
 ) {
     LoadingBox(
+        loading = state.value.loading,
         modifier = Modifier
             .padding(horizontal = 8.dp)
     ) {

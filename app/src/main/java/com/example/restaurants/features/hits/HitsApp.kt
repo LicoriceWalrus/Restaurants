@@ -26,5 +26,4 @@ val hitsModule = module {
     }
 
     viewModel { HitsViewModel(get()) }
-
 }

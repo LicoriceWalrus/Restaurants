@@ -35,6 +35,7 @@ private fun Restaurants(
     refresh: () -> Unit
 ) {
     LoadingBox(
+        loading = state.value.loading,
         modifier = Modifier
             .padding(horizontal = 8.dp)
     ) {
@@ -50,7 +51,7 @@ private fun Restaurants(
                 val restaurants = state.value.restaurants
                 items(
                     count = restaurants.size,
-                    key = { position: Int -> restaurants[position].name },
+                    key = null,
                 ) { position ->
                     RestaurantItem(
                         restaurant = restaurants[position]

@@ -7,6 +7,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
@@ -39,7 +40,7 @@ fun HitItem(
                 Icon(
                     modifier = Modifier
                         .padding(end = 8.dp)
-                        .align(Alignment.CenterVertically)
+                        .align(CenterVertically)
                         .size(75.dp),
                     painter = rememberAsyncImagePainter(hit.productImage),
                     contentDescription = "",
@@ -47,7 +48,7 @@ fun HitItem(
                 )
                 Column(
                     modifier = Modifier
-                        .align(Alignment.CenterVertically)
+                        .align(CenterVertically)
                 ) {
                     Text(
                         maxLines = 1,
@@ -60,8 +61,8 @@ fun HitItem(
                         Icon(
                             modifier = Modifier
                                 .padding(end = 8.dp)
-                                .align(Alignment.CenterVertically)
-                                .size(20.dp),
+                                .size(20.dp)
+                                .align(CenterVertically),
                             painter = rememberAsyncImagePainter(hit.restaurantLogo),
                             contentDescription = "",
                             tint = Color.Unspecified

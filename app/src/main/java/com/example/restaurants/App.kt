@@ -3,6 +3,7 @@ package com.example.restaurants
 import android.app.Application
 import com.example.restaurants.features.hits.hitsModule
 import com.example.restaurants.features.restaurants.restaurantsModule
+import com.example.restaurants.features.reviews.reviewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import org.koin.android.ext.koin.androidContext
@@ -19,7 +20,7 @@ class App : Application() {
             androidContext(this@App)
             koin.loadModules(
                 listOf(
-                    network, restaurantsModule, hitsModule
+                    network, restaurantsModule, hitsModule, reviewModel
                 )
             )
         }
